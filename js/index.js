@@ -68,8 +68,52 @@ function count() {
 
 	r5.innerText = Number(c4.innerText) + Number(c8.innerText) + Number(c12.innerText) + Number(c16.innerText);
 	r19.innerText = Number(c4.innerText) + Number(c8.innerText) + Number(c12.innerText) + Number(c16.innerText);
+
+	if (r1.innerText == 34) r1.classList.add('true');
+	else r1.classList.remove('true');
 }
 
+function replace() {
+	var firstPlace = first.classList[2];
+	var secondPlace = second.classList[2];
+
+	first.classList.remove(firstPlace);
+	first.classList.add(secondPlace);
+
+	second.classList.remove(secondPlace);
+	second.classList.add(firstPlace);
+
+	setTimeout(() => {
+		first.classList.remove('first');
+		second.classList.remove('second');
+		first = null;
+		second = null;
+
+		count();
+		selectBlock = false;
+	}, 200);
+}
+
+var first, second, selectBlock = false;
+
 (() => {
+	var nCell = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
+	nCell.forEach((cell) => {
+		cell.addEventListener('click', function() {
+			if (selectBlock) return;
+
+			if (!first) {
+				first = this;
+				first.classList.add('first');
+			} else {
+				selectBlock = true
+				second = this;
+				second.classList.add('second');
+				setTimeout(() => {
+					replace();
+				}, 300);
+			}
+		});
+	});
 	count();
 })();

@@ -32,11 +32,26 @@ html, body {
 	line-height: 100px;
 	background: #FFFFE0;
 	cursor: default;
-	user-select: none;  
+	user-select: none;
+	transition: .2s;
 }
 
 .r-cell {
 	background: #90EE90;
+}
+
+.true {
+	background: #bbEEbb;
+}
+
+.first {
+	z-index: 3;
+	box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, .5);
+}
+
+.second {
+	z-index: 2;
+	box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, .5);
 }
 
 .c1 {
