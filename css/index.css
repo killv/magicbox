@@ -13,11 +13,12 @@ html, body {
 }
 
 .container {
-	width: 500px;
-	height: 500px;
+	width: 650px;
+	height: 650px;
 	display: flex;
 	margin: auto;
 	background: #ccc;
+	position: relative;
 }
 
 .cell {
@@ -25,4 +26,185 @@ html, body {
 	height: 100px;
 	margin: auto;
 	background: #fff;
+	position: absolute;
+}
+
+.c1 {
+	top: 110px;
+	left: 110px;
+}
+
+.c2 {
+	top: 110px;
+	left: 220px;
+}
+
+.c3 {
+	top: 110px;
+	left: 330px;
+}
+
+.c4 {
+	top: 110px;
+	left: 440px;
+}
+
+.c5 {
+	top: 220px;
+	left: 110px;
+}
+
+.c6 {
+	top: 220px;
+	left: 220px;
+}
+
+.c7 {
+	top: 220px;
+	left: 330px;
+}
+
+.c8 {
+	top: 220px;
+	left: 440px;
+}
+
+.c9 {
+	top: 330px;
+	left: 110px;
+}
+
+.c10 {
+	top: 330px;
+	left: 220px;
+}
+
+.c11 {
+	top: 330px;
+	left: 330px;
+}
+
+.c12 {
+	top: 330px;
+	left: 440px;
+}
+
+.c13 {
+	top: 440px;
+	left: 110px;
+}
+
+.c14 {
+	top: 440px;
+	left: 220px;
+}
+
+.c15 {
+	top: 440px;
+	left: 330px;
+}
+
+.c16 {
+	top: 440px;
+	left: 440px;
+}
+
+.r1 {	
+	top: 0;
+	left: 0;
+}
+
+.r2 {	
+	top: 0;
+	left: 110px;
+}
+
+.r3 {	
+	top: 0;
+	left: 220px;
+}
+
+.r4 {	
+	top: 0;
+	left: 330px;
+}
+
+.r5 {	
+	top: 0;
+	left: 440px;
+}
+
+.r6 {	
+	top: 0;
+	left: 550px;
+}
+
+.r7 {	
+	top: 110px;
+	left: 0;
+}
+
+.r8 {	
+	top: 110px;
+	left: 550px;
+}
+
+.r9 {	
+	top: 220px;
+	left: 0;
+}
+
+.r10 {	
+	top: 220px;
+	left: 550px;
+}
+
+.r11 {	
+	top: 330px;
+	left: 0;
+}
+
+.r12 {	
+	top: 330px;
+	left: 550px;
+}
+
+.r13 {	
+	top: 440px;
+	left: 0;
+}
+
+.r14 {	
+	top: 440px;
+	left: 550px;
+}
+
+.r15 {	
+	top: 550px;
+	left: 0;
+}
+
+.r16 {	
+	top: 550px;
+	left: 110px;
+}
+
+.r17 {	
+	top: 550px;
+	left: 220px;
+}
+
+.r18 {	
+	top: 550px;
+	left: 330px;
+}
+
+.r19 {	
+	top: 550px;
+	left: 440px;
+}
+
+.r20 {	
+	top: 550px;
+	left: 550px;
 }
