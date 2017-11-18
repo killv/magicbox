@@ -27,6 +27,14 @@ html, body {
 	margin: auto;
 	background: #fff;
 	position: absolute;
+	text-align: center;
+	font-size: 30px;
+	line-height: 100px;
+	background: #FFFFE0;
+}
+
+.r-cell {
+	background: #90EE90;
 }
 
 .c1 {
