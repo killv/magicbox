@@ -75,8 +75,6 @@ function count() {
 		if (r.innerText == 34) r.classList.add('true');
 		else r.classList.remove('true');
 	});
-
-	
 }
 
 function replace() {
@@ -100,11 +98,23 @@ function replace() {
 	}, 200);
 }
 
+function fillCells() {
+	var nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
+	console.log(Math.floor(Math.random() * (15)));
+
+	for (var i = 1; i <= 16; i++) {
+		// nCells[].innerText = i;
+		index = Math.floor(Math.random() * (nCells.length));
+		nCells[index].innerText = i;
+		nCells.splice(index, 1);
+	}
+}
+
 var first, second, selectBlock = false;
 
 (() => {
-	var nCell = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
-	nCell.forEach((cell) => {
+	var nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
+	nCells.forEach((cell) => {
 		cell.addEventListener('click', function() {
 			if (selectBlock) return;
 
@@ -121,5 +131,12 @@ var first, second, selectBlock = false;
 			}
 		});
 	});
-	count();
+
+	var start = document.getElementById('start')
+	var startBg = document.getElementById('startBg')
+	start.addEventListener('click', function() {
+		startBg.classList.add('hidden');
+		fillCells();
+		count();
+	});
 })();
