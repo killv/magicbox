@@ -22,6 +22,8 @@ function count() {
 	var r19 = document.getElementById('r19');
 	var r20 = document.getElementById('r20');
 
+	var results = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20];
+
 	var c1 = document.getElementsByClassName('c1')[0];
 	var c2 = document.getElementsByClassName('c2')[0];
 	var c3 = document.getElementsByClassName('c3')[0];
@@ -69,8 +71,12 @@ function count() {
 	r5.innerText = Number(c4.innerText) + Number(c8.innerText) + Number(c12.innerText) + Number(c16.innerText);
 	r19.innerText = Number(c4.innerText) + Number(c8.innerText) + Number(c12.innerText) + Number(c16.innerText);
 
-	if (r1.innerText == 34) r1.classList.add('true');
-	else r1.classList.remove('true');
+	results.forEach((r) => {
+		if (r.innerText == 34) r.classList.add('true');
+		else r.classList.remove('true');
+	});
+
+	
 }
 
 function replace() {

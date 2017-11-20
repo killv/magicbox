@@ -46,13 +46,13 @@ html, body {
 }
 
 .r-cell {
-	background: #90EE90;
-	background: linear-gradient(135deg, rgba(144,238,144,1) 0%, rgba(164,179,87,1) 100%);    /* http://www.cssmatic.com/gradient-generator */
+	background: #bbEEbb;
+	background: linear-gradient(135deg, rgba(187,238,187,1) 0%, rgba(144,238,144,1) 100%);
 }
 
 .true {
-	background: #bbEEbb;
-	background: linear-gradient(135deg, rgba(187,238,187,1) 0%, rgba(144,238,144,1) 100%);
+	background: #90EE90;
+	background: linear-gradient(135deg, rgba(144,238,144,1) 0%, rgba(164,179,87,1) 100%);    /* http://www.cssmatic.com/gradient-generator */
 }
 
 .first {
