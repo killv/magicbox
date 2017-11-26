@@ -127,7 +127,7 @@ function replace() {
 }
 
 function fillCells() {
-	var nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
+	var nCells = Array.from(document.getElementsByClassName('n-cell'));
 	for (var i = 1; i <= 16; i++) {
 		index = Math.floor(Math.random() * (nCells.length));
 		nCells[index].innerText = i;
