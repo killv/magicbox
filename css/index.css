@@ -4,13 +4,52 @@ html, body {
 	padding: 0;
 	margin: 0;
 	font-size: 14px;
+	color: #333;
+}
+
+.start-bg {
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(245, 245, 245, .5);
+	display: flex;
+}
+
+.start {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	font-size: 50px;
+	margin: auto;
+	cursor: default;
+	background: #90EE90;
+	background: linear-gradient(135deg, rgba(144,238,144,1) 0%, 
+		        rgba(164,179,87,1) 100%); 
+	box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, .5);
+}
+
+.start:hover {
+	transition: .2s;
+	background: #bbEEbb;
+	background: linear-gradient(135deg, rgba(187,238,187,1) 0%, 
+		        rgba(144,238,144,1) 100%);
+	box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, .5);
+}
+
+.hidden {
+	display: none;
 }
 
 .wrap {
 	width: 100%;
 	height: 100%;
 	display: flex;
-	background: #fcfcfc;
+	background: #f5f5f5;
 }
 
 .container {
@@ -26,10 +65,11 @@ html, body {
 	height: 100px;
 	margin: auto;
 	background: #fff;
-	position: absolute;
-	text-align: center;
-	font-size: 30px;
-	line-height: 100px;
+	position: absolute;	
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	font-size: 30px;	
 	box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, .5);    /* https://css3gen.com/box-shadow/ */
 	cursor: default;
 	user-select: none;
@@ -47,12 +87,14 @@ html, body {
 
 .r-cell {
 	background: #bbEEbb;
-	background: linear-gradient(135deg, rgba(187,238,187,1) 0%, rgba(144,238,144,1) 100%);
+	background: linear-gradient(135deg, rgba(187,238,187,1) 0%, 
+		        rgba(144,238,144,1) 100%);
 }
 
-.true {
+.correct {
 	background: #90EE90;
-	background: linear-gradient(135deg, rgba(144,238,144,1) 0%, rgba(164,179,87,1) 100%);    /* http://www.cssmatic.com/gradient-generator */
+	background: linear-gradient(135deg, rgba(144,238,144,1) 0%, 
+		        rgba(164,179,87,1) 100%);    /* http://www.cssmatic.com/gradient-generator */
 }
 
 .first {
@@ -73,182 +115,182 @@ html, body {
 	box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, .5);
 }
 
-.c1 {
+.c0 {
 	top: 110px;
 	left: 110px;
+}
+
+.c1 {
+	top: 110px;
+	left: 220px;
 }
 
 .c2 {
 	top: 110px;
-	left: 220px;
+	left: 330px;
 }
 
 .c3 {
 	top: 110px;
-	left: 330px;
+	left: 440px;
 }
 
 .c4 {
-	top: 110px;
-	left: 440px;
+	top: 220px;
+	left: 110px;
 }
 
 .c5 {
 	top: 220px;
-	left: 110px;
+	left: 220px;
 }
 
 .c6 {
 	top: 220px;
-	left: 220px;
+	left: 330px;
 }
 
 .c7 {
 	top: 220px;
-	left: 330px;
+	left: 440px;
 }
 
 .c8 {
-	top: 220px;
-	left: 440px;
+	top: 330px;
+	left: 110px;
 }
 
 .c9 {
 	top: 330px;
-	left: 110px;
+	left: 220px;
 }
 
 .c10 {
 	top: 330px;
-	left: 220px;
+	left: 330px;
 }
 
 .c11 {
 	top: 330px;
-	left: 330px;
+	left: 440px;
 }
 
 .c12 {
-	top: 330px;
-	left: 440px;
+	top: 440px;
+	left: 110px;
 }
 
 .c13 {
 	top: 440px;
-	left: 110px;
+	left: 220px;
 }
 
 .c14 {
 	top: 440px;
-	left: 220px;
+	left: 330px;
 }
 
 .c15 {
 	top: 440px;
-	left: 330px;
+	left: 440px;
 }
 
-.c16 {
-	top: 440px;
-	left: 440px;
+.r0 {	
+	top: 0;
+	left: 0;
 }
 
 .r1 {	
 	top: 0;
-	left: 0;
+	left: 110px;
 }
 
 .r2 {	
 	top: 0;
-	left: 110px;
+	left: 220px;
 }
 
 .r3 {	
 	top: 0;
-	left: 220px;
+	left: 330px;
 }
 
 .r4 {	
 	top: 0;
-	left: 330px;
+	left: 440px;
 }
 
 .r5 {	
 	top: 0;
-	left: 440px;
+	left: 550px;
 }
 
 .r6 {	
-	top: 0;
-	left: 550px;
+	top: 110px;
+	left: 0;
 }
 
 .r7 {	
 	top: 110px;
-	left: 0;
+	left: 550px;
 }
 
 .r8 {	
-	top: 110px;
-	left: 550px;
+	top: 220px;
+	left: 0;
 }
 
 .r9 {	
 	top: 220px;
-	left: 0;
+	left: 550px;
 }
 
 .r10 {	
-	top: 220px;
-	left: 550px;
+	top: 330px;
+	left: 0;
 }
 
 .r11 {	
 	top: 330px;
-	left: 0;
+	left: 550px;
 }
 
 .r12 {	
-	top: 330px;
-	left: 550px;
+	top: 440px;
+	left: 0;
 }
 
 .r13 {	
 	top: 440px;
-	left: 0;
+	left: 550px;
 }
 
 .r14 {	
-	top: 440px;
-	left: 550px;
+	top: 550px;
+	left: 0;
 }
 
 .r15 {	
 	top: 550px;
-	left: 0;
+	left: 110px;
 }
 
 .r16 {	
 	top: 550px;
-	left: 110px;
+	left: 220px;
 }
 
 .r17 {	
 	top: 550px;
-	left: 220px;
+	left: 330px;
 }
 
 .r18 {	
 	top: 550px;
-	left: 330px;
-}
-
-.r19 {	
-	top: 550px;
 	left: 440px;
 }
 
-.r20 {	
+.r19 {	
 	top: 550px;
 	left: 550px;
 }
