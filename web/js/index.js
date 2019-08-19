@@ -1,7 +1,7 @@
 //-- Magicbox
 
-var results; //-- array
-var cells; //-- array
+let results = []
+let cells = []
 
 function init() {
 	results = [
@@ -29,7 +29,7 @@ function init() {
 
 	updateCells();
 
-	var nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
+	let nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
 	nCells.forEach((cell) => {
 		cell.addEventListener('click', function() {
 			if (selectBlock) return;
@@ -48,8 +48,8 @@ function init() {
 		});
 	});
 
-	var start = document.getElementById('start')
-	var startBg = document.getElementById('startBg')
+	let start = document.getElementById('start')
+	let startBg = document.getElementById('startBg')
 	start.addEventListener('click', function() {
 		startBg.classList.add('hidden');
 		fillCells();
@@ -94,10 +94,22 @@ function count() {
 }
 
 function checkResult() {
+	let finish = true;
 	results.forEach((r) => {
-		if (r.innerText == 34) r.classList.add('correct');
-		else r.classList.remove('correct');
+		if (r.innerText == 34) {
+			r.classList.add('correct');
+		}
+		else {
+			finish = false;
+			r.classList.remove('correct');
+		}
 	});
+	if (finish) {
+		console.log('Grats!')
+		document.getElementById('start').classList.add('hidden')
+		document.getElementById('startBg').classList.remove('hidden')
+		document.getElementById('finish').classList.remove('hidden')
+	}
 }
 
 function Num(cell) {
@@ -105,8 +117,8 @@ function Num(cell) {
 }
 
 function replace() {
-	var firstPlace = first.classList[2];
-	var secondPlace = second.classList[2];
+	let firstPlace = first.classList[2];
+	let secondPlace = second.classList[2];
 
 	first.classList.remove(firstPlace);
 	first.classList.add(secondPlace);
@@ -123,19 +135,23 @@ function replace() {
 		updateCells();
 		count();
 		selectBlock = false;
+		let counter = document.getElementById('counter');
+		counter.innerHTML = parseInt(counter.innerHTML) + 1;
 	}, 200);
 }
 
 function fillCells() {
-	var nCells = Array.from(document.getElementsByClassName('n-cell'));
-	for (var i = 1; i <= 16; i++) {
+	let nCells = Array.from(document.getElementsByClassName('n-cell'));
+	for (let i = 1; i <= 16; i++) {
 		index = Math.floor(Math.random() * (nCells.length));
 		nCells[index].innerText = i;
 		nCells.splice(index, 1);
 	}
 }
 
-var first, second, selectBlock = false;
+let first;
+let second;
+let selectBlock = false;
 
 (() => {
 	init();
