@@ -42,7 +42,7 @@ const server = http.createServer((request, response) => {
             })
             return
           case 'favicon.ico':
-            fs.readFile('favicon.ico', {}, (err, data) => {
+            fs.readFile('./web/favicon.ico', {}, (err, data) => {
               if (!err) {
                 response.write(data);
                 response.end();
