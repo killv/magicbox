@@ -2,6 +2,7 @@
 
 let results = []
 let cells = []
+let counter = document.getElementById('counter')
 
 function init() {
 	results = [
@@ -27,8 +28,6 @@ function init() {
 		document.getElementById('r19')
 	];
 
-	updateCells();
-
 	let nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
 	nCells.forEach((cell) => {
 		cell.addEventListener('click', function() {
@@ -53,7 +52,9 @@ function init() {
 	start.addEventListener('click', function() {
 		startBg.classList.add('hidden');
 		fillCells();
+		updateCells()
 		count();
+		checkResult();
 	});
 }
 
@@ -76,6 +77,8 @@ function updateCells() {
 		document.getElementsByClassName('c14')[0],
 		document.getElementsByClassName('c15')[0]
 	];
+	
+	localStorage.setItem('MB.cells', JSON.stringify(cells.map(n => n.innerText)))
 }
 
 function count() {
@@ -89,8 +92,6 @@ function count() {
 	results[2].innerText = results[16].innerText = Num(cells[1]) + Num(cells[5]) + Num(cells[9]) + Num(cells[13]);
 	results[3].innerText = results[17].innerText = Num(cells[2]) + Num(cells[6]) + Num(cells[10]) + Num(cells[14]);
 	results[4].innerText = results[18].innerText = Num(cells[3]) + Num(cells[7]) + Num(cells[11]) + Num(cells[15]);
-
-	checkResult();
 }
 
 function checkResult() {
@@ -109,6 +110,8 @@ function checkResult() {
 		document.getElementById('start').classList.add('hidden')
 		document.getElementById('startBg').classList.remove('hidden')
 		document.getElementById('finish').classList.remove('hidden')
+		localStorage.removeItem('MB.cells')
+		localStorage.removeItem('MB.steps')
 	}
 }
 
@@ -134,18 +137,36 @@ function replace() {
 
 		updateCells();
 		count();
+		checkResult();
+		
 		selectBlock = false;
-		let counter = document.getElementById('counter');
-		counter.innerHTML = parseInt(counter.innerHTML) + 1;
-	}, 200);
+		
+
+		if (firstPlace !== secondPlace) {
+			let step = parseInt(counter.innerText) || 0
+			step++
+			counter.innerText = step
+			localStorage.setItem('MB.steps', step)
+		}
+	}, 200)
 }
 
 function fillCells() {
 	let nCells = Array.from(document.getElementsByClassName('n-cell'));
-	for (let i = 1; i <= 16; i++) {
-		index = Math.floor(Math.random() * (nCells.length));
-		nCells[index].innerText = i;
-		nCells.splice(index, 1);
+	let savedCells = JSON.parse(localStorage.getItem('MB.cells'))
+	let steps = localStorage.getItem('MB.steps')
+	if (savedCells) {
+		console.log(`savedCells`, savedCells)
+		savedCells.forEach((item, i) => {
+			nCells[i].innerText = item;
+		})
+		counter.innerText = steps
+	} else {
+		for (let i = 1; i <= 16; i++) {
+			index = Math.floor(Math.random() * (nCells.length));
+			nCells[index].innerText = i;
+			nCells.splice(index, 1);
+		}
 	}
 }
 

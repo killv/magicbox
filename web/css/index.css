@@ -15,7 +15,7 @@ html, body {
 	top: 0;
 	text-align: center;
 	font-size: 36px;
-	margin: 26px;
+	margin: 26px 0;
 }
 
 .start-bg {
@@ -110,11 +110,12 @@ html, body {
 
 .first {
 	z-index: 3;
-	box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, .5);
+	box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, .6);
+	background: linear-gradient(135deg, rgba(255,255,224,1) 0%, rgba(206,245,206) 100%);
 }
 
 .first:hover {
-	box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, .5);
+	box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, .6);
 }
 
 .second {
