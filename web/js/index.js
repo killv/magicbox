@@ -152,7 +152,8 @@ function replace() {
 }
 
 function fillCells() {
-	let nCells = Array.from(document.getElementsByClassName('n-cell'));
+	// let nCells = Array.from(document.getElementsByClassName('n-cell'));
+	let nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
 	let savedCells = JSON.parse(localStorage.getItem('MB.cells'))
 	let steps = localStorage.getItem('MB.steps')
 	if (savedCells) {
