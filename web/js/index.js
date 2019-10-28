@@ -1,8 +1,8 @@
 //-- Magicbox
 
-let results = []
-let cells = []
-let counter = document.getElementById('counter')
+let results = [];
+let cells = [];
+let counter = document.getElementById('counter');
 
 function init() {
 	results = [
@@ -37,7 +37,7 @@ function init() {
 				first = this;
 				first.classList.add('first');
 			} else {
-				selectBlock = true
+				selectBlock = true;
 				second = this;
 				second.classList.add('second');
 				setTimeout(() => {
@@ -51,10 +51,14 @@ function init() {
 	let startBg = document.getElementById('startBg')
 	start.addEventListener('click', function() {
 		startBg.classList.add('hidden');
-		fillCells();
-		updateCells()
-		count();
-		checkResult();
+		fillCells()
+			.then(() => {
+				updateCells();
+				count()
+					.then(() => {
+						checkResult();
+				});
+			});
 	});
 }
 
@@ -78,20 +82,117 @@ function updateCells() {
 		document.getElementsByClassName('c15')[0]
 	];
 	
-	localStorage.setItem('MB.cells', JSON.stringify(cells.map(n => n.innerText)))
+	localStorage.setItem('MB.cells', JSON.stringify(cells.map(n => n.innerText)));
 }
 
 function count() {
-	results[0].innerText = results[19].innerText = Num(cells[0]) + Num(cells[5]) + Num(cells[10]) + Num(cells[15]);
-	results[5].innerText = results[14].innerText = Num(cells[3]) + Num(cells[6]) + Num(cells[9]) + Num(cells[12]);
-	results[6].innerText = results[7].innerText = Num(cells[0]) + Num(cells[1]) + Num(cells[2]) + Num(cells[3]);
-	results[8].innerText = results[9].innerText = Num(cells[4]) + Num(cells[5]) + Num(cells[6]) + Num(cells[7]);
-	results[10].innerText = results[11].innerText = Num(cells[8]) + Num(cells[9]) + Num(cells[10]) + Num(cells[11]);
-	results[12].innerText = results[13].innerText = Num(cells[12]) + Num(cells[13]) + Num(cells[14]) + Num(cells[15]);
-	results[1].innerText = results[15].innerText = Num(cells[0]) + Num(cells[4]) + Num(cells[8]) + Num(cells[12]);
-	results[2].innerText = results[16].innerText = Num(cells[1]) + Num(cells[5]) + Num(cells[9]) + Num(cells[13]);
-	results[3].innerText = results[17].innerText = Num(cells[2]) + Num(cells[6]) + Num(cells[10]) + Num(cells[14]);
-	results[4].innerText = results[18].innerText = Num(cells[3]) + Num(cells[7]) + Num(cells[11]) + Num(cells[15]);
+	return new Promise((resolve) => {
+		// let steps 
+		// need to make delay here too 
+		// to control animation
+		function countWithDelay(step = 0) {
+			switch(step) {
+				case 0: {
+					setTimeout(() => {
+						results[0].innerText = results[19].innerText = Num(cells[0]) + Num(cells[5]) + Num(cells[10]) + Num(cells[15]);
+						paintResult([results[0], results[19]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 1: {
+					setTimeout(() => {
+						results[5].innerText = results[14].innerText = Num(cells[3]) + Num(cells[6]) + Num(cells[9]) + Num(cells[12]);
+						paintResult([results[5], results[14]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 2: {
+					setTimeout(() => {
+						results[6].innerText = results[7].innerText = Num(cells[0]) + Num(cells[1]) + Num(cells[2]) + Num(cells[3]);
+						paintResult([results[6], results[7]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 3: {
+					setTimeout(() => {
+						results[8].innerText = results[9].innerText = Num(cells[4]) + Num(cells[5]) + Num(cells[6]) + Num(cells[7]);
+						paintResult([results[8], results[9]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 4: {
+					setTimeout(() => {
+						results[10].innerText = results[11].innerText = Num(cells[8]) + Num(cells[9]) + Num(cells[10]) + Num(cells[11]);
+						paintResult([results[10], results[11]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 5: {
+					setTimeout(() => {
+						results[12].innerText = results[13].innerText = Num(cells[12]) + Num(cells[13]) + Num(cells[14]) + Num(cells[15]);
+						paintResult([results[12], results[13]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 6: {
+					setTimeout(() => {
+						results[1].innerText = results[15].innerText = Num(cells[0]) + Num(cells[4]) + Num(cells[8]) + Num(cells[12]);
+						paintResult([results[1], results[15]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 7: {
+					setTimeout(() => {
+						results[2].innerText = results[16].innerText = Num(cells[1]) + Num(cells[5]) + Num(cells[9]) + Num(cells[13]);
+						paintResult([results[2], results[16]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 8: {
+					setTimeout(() => {
+						results[3].innerText = results[17].innerText = Num(cells[2]) + Num(cells[6]) + Num(cells[10]) + Num(cells[14]);
+						paintResult([results[3], results[17]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 9: {
+					setTimeout(() => {
+						results[4].innerText = results[18].innerText = Num(cells[3]) + Num(cells[7]) + Num(cells[11]) + Num(cells[15]);
+						paintResult([results[4], results[18]]);
+						countWithDelay(++step);
+					}, 70);
+					return;
+				}
+				case 10: {
+					setTimeout(() => {
+						resolve();
+					}, 70);
+					return;
+				}
+			}
+		}
+		countWithDelay();
+	});
+}
+
+function paintResult(rs) {
+	rs.forEach((r) => {
+		if (r.innerText == 34) {
+			r.classList.add('correct');
+		}
+		else {
+			r.classList.remove('correct');
+		}
+	});
 }
 
 function checkResult() {
@@ -136,39 +237,62 @@ function replace() {
 		second = null;
 
 		updateCells();
-		count();
-		checkResult();
 		
-		selectBlock = false;
+		count()
+			.then(() => {
+				checkResult();
 		
-
-		if (firstPlace !== secondPlace) {
-			let step = parseInt(counter.innerText) || 0
-			step++
-			counter.innerText = step
-			localStorage.setItem('MB.steps', step)
-		}
+				selectBlock = false;
+		
+				if (firstPlace !== secondPlace) {
+					let step = parseInt(counter.innerText) || 0;
+					step++;
+					counter.innerText = step;
+					localStorage.setItem('MB.steps', step);
+				}
+		});
 	}, 200)
 }
 
 function fillCells() {
-	// let nCells = Array.from(document.getElementsByClassName('n-cell'));
-	let nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
-	let savedCells = JSON.parse(localStorage.getItem('MB.cells'))
-	let steps = localStorage.getItem('MB.steps')
-	if (savedCells) {
-		console.log(`savedCells`, savedCells)
-		savedCells.forEach((item, i) => {
-			nCells[i].innerText = item;
-		})
-		counter.innerText = steps
-	} else {
-		for (let i = 1; i <= 16; i++) {
-			index = Math.floor(Math.random() * (nCells.length));
-			nCells[index].innerText = i;
-			nCells.splice(index, 1);
+	return new Promise((resolve) => {
+		// let nCells = Array.from(document.getElementsByClassName('n-cell'));
+		let nCells = Array.prototype.slice.call(document.getElementsByClassName('n-cell'));
+		let savedCells = JSON.parse(localStorage.getItem('MB.cells'));
+		let steps = localStorage.getItem('MB.steps');
+		if (savedCells) {
+			console.log(`savedCells`, savedCells);
+			function fillWithDelay(i = 0) {
+				if (!nCells[i]) {
+					counter.innerText = steps;
+					resolve();
+				} else {
+					let delay = savedCells[i] * 20;
+					setTimeout(() => {
+						nCells[i].innerText = savedCells[i];
+						fillWithDelay(++i);
+					}, delay);
+				}
+			}
+			fillWithDelay();
+			
+		} else {
+			function fillWithDelay(i = 1) {
+				if (i === 17) {
+					resolve();
+				} else {
+					let delay = i * 20;
+					setTimeout(() => {
+						let index = Math.floor(Math.random() * (nCells.length));
+						nCells[index].innerText = i;
+						nCells.splice(index, 1);
+						fillWithDelay(++i);
+					}, delay);
+				}
+			}
+			fillWithDelay();
 		}
-	}
+	});
 }
 
 let first;
